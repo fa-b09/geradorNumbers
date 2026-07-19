@@ -1,69 +1,16 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    background-color: #1a202c ;
-    margin: 0;
-}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #1a202c; margin: 0; }
+.container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 350px; }
 
-.container {
-    background:white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 350px; /* Aumentei um pouco para caber melhor */
-}
+.section { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.input-group { display: flex; gap: 10px; margin-bottom: 10px; width: 100%; }
+.input-group input { padding: 8px; flex: 1; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
 
-/* Garante que o grupo ocupe toda a largura */
-.input-group { 
-    display: flex; 
-    gap: 10px; 
-    margin-bottom: 10px; 
-    width: 100%;
-}
+button { width: 100%; padding: 10px; border: none; border-radius: 4px; cursor: pointer; color: white; margin-bottom: 5px; }
+button#btnGerar { background: #007bff; }
+button#btnGerarFixo { background: #28a745; }
+button#btnGerarPar { background: #6f42c1; }
 
-/* Direcionamos os inputs dentro do grupo */
-.input-group input { 
-    padding: 8px; 
-    flex: 1 1 0; 
-    border: 1px solid #ddd; 
-    border-radius: 4px; 
-    box-sizing: border-box; /* OBRIGATÓRIO: impede que o padding aumente o tamanho do campo */
-    min-width: 0;
-}
+button:hover { opacity: 0.9; }
 
-button { 
-    width: 100%; 
-    padding: 10px; 
-    background: #007bff; 
-    color: white; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-}
-
-button:hover { background: #0056b3; }
-
-#resultado { 
-    width: 100%; 
-    height: 200px; 
-    margin-top: 15px; 
-    padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    resize: none; 
-}
-
-#mensagemStatus {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-    display: none;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    font-size: 0.9rem;
-}
+#resultado { width: 100%; height: 150px; margin-top: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; resize: none; }
+#mensagemStatus { margin-top: 10px; padding: 10px; border-radius: 4px; text-align: center; display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; font-size: 0.9rem; }

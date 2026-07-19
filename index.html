@@ -8,19 +8,38 @@
 </head>
 <body>
     <div class="container">
-    <h1>Gerador de Séries</h1>
-    
-    <div class="input-group">
-        <input type="text" id="prefixo" value="79/1012" placeholder="Prefixo">
-        <input type="number" id="qnt" value="10" placeholder="Qtd">
-    </div>
+        <h1>Gerador de Séries</h1>
+        
+        <!-- Funcionalidade 1: Original -->
+        <div class="section">
+            <div class="input-group">
+                <input type="text" id="prefixo" value="79/1012" placeholder="Prefixo">
+                <input type="number" id="qnt" value="10" placeholder="Qtd">
+            </div>
+            <button id="btnGerar">Gerar Sequencial</button>
+        </div>
 
-    <button id="btnGerar">Gerar e Copiar</button>
-    
-    <div id="mensagemStatus"></div> 
-    
-    <textarea id="resultado" readonly placeholder="Os números aparecerão aqui..."></textarea>
-</div>
+        <!-- Funcionalidade 2: Número Fixo -->
+        <div class="section">
+            <div class="input-group">
+                <input type="text" id="numFixo" placeholder="Número (ex: 1311)">
+                <input type="number" id="qntFixo" value="1" min="1" max="20" placeholder="Vezes">
+            </div>
+            <button id="btnGerarFixo" class="secondary">Gerar Fixo</button>
+        </div>
+
+        <!-- Funcionalidade 3: Pares -->
+        <div class="section">
+            <div class="input-group">
+                <input type="text" id="numPar" placeholder="Número (ex: 1371)">
+                <input type="number" id="qntPar" value="1" min="1" max="20" placeholder="Pares">
+            </div>
+            <button id="btnGerarPar" class="tertiary">Gerar Pares</button>
+        </div>
+        
+        <div id="mensagemStatus"></div> 
+        <textarea id="resultado" readonly placeholder="Os números aparecerão aqui..."></textarea>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
