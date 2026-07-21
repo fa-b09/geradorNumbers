@@ -1,18 +1,34 @@
+// Máscara automática para o ID do LMC (formata enquanto o usuário digita)
+const inputLmc = document.getElementById('idLmc');
+
+inputLmc.addEventListener('input', (e) => {
+    // Remove tudo o que não for número
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    // Aplica a formatação progressiva (ex: 159/2755-01)
+    if (valor.length > 3 && valor.length <= 7) {
+        valor = valor.substring(0, 3) + '/' + valor.substring(3);
+    } else if (valor.length > 7) {
+        valor = valor.substring(0, 3) + '/' + valor.substring(3, 7) + '-' + valor.substring(7, 9);
+    }
+    
+    e.target.value = valor;
+});
+
 // Função auxiliar para manter o objeto fixo e incrementar apenas o final (ex: 323/4282-01, 323/4282-02...)
 function incrementarSufixoLmc(lmcBase, passo) {
     const partes = lmcBase.split('/');
     if (partes.length !== 2) return lmcBase;
     
-    const prefixo = partes[0]; // Ex: "323"
+    const prefixo = partes[0]; 
     const subPartes = partes[1].split('-');
     
     if (subPartes.length !== 2) return lmcBase;
     
-    const numeroObjeto = subPartes[0]; // Ex: "4282" (fica fixo)
-    const sufixoInicial = parseInt(subPartes[1], 10); // Ex: "01"
+    const numeroObjeto = subPartes[0]; 
+    const sufixoInicial = parseInt(subPartes[1], 10); 
     
     const novoSufixo = sufixoInicial + passo;
-    // Garante que fique com 2 dígitos (ex: 1 vira "01", 10 vira "10")
     const sufixoFormatado = novoSufixo.toString().padStart(2, '0');
     
     return `${prefixo}/${numeroObjeto}-${sufixoFormatado}`;

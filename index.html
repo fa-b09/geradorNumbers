@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" style="width: 700px; display: flex; gap: 20px;">
+    <div class="container">
         
-        <!-- Coluna da Esquerda: Dados Principais (Atendimento, LMC, Caminhão, NF) -->
-        <div style="flex: 1;">
+        <!-- Coluna da Esquerda: Dados Principais -->
+        <div class="panel">
             <h2>Dados Principais</h2>
             
             <div class="input-field">
@@ -20,10 +20,11 @@
 
             <div class="input-field">
                 <label for="idLmc">ID do LMC (Inicial):</label>
-                <input type="text" id="idLmc" value="159/2755-01" placeholder="Ex: 159/2755-01">
+                <!-- Alterado o maxlength para caber exatamente os números e símbolos formatados -->
+                <input type="text" id="idLmc" value="159/2755-01" maxlength="11" placeholder="Digite só números (ex: 159275501)">
             </div>
 
-            <div class="input-row" style="display: flex; gap: 10px;">
+            <div class="input-row">
                 <div class="input-field">
                     <label for="caminhao">Caminhão:</label>
                     <input type="text" id="caminhao" value="79" placeholder="Caminhão">
@@ -44,7 +45,7 @@
         </div>
 
         <!-- Coluna da Direita: Relatórios Separados -->
-        <div style="flex: 1; border-left: 1px solid #ddd; padding-left: 20px;">
+        <div class="panel">
             <h2>Relatórios (Pares)</h2>
             
             <div class="input-field">
@@ -57,7 +58,7 @@
                 <input type="number" id="qntRelatorio" value="12" min="1" max="20" placeholder="Qtd">
             </div>
 
-            <button id="btnGerarRelatorio" class="secondary" style="background: #28a745;">Gerar Relatórios</button>
+            <button id="btnGerarRelatorio" class="secondary">Gerar Relatórios</button>
             <textarea id="resultadoRelatorio" readonly placeholder="Relatórios em pares aqui..."></textarea>
         </div>
 
