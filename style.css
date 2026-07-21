@@ -1,16 +1,131 @@
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #1a202c; margin: 0; }
-.container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 350px; }
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    padding: 40px 15px; 
+    background-color: #f1f5f9; /* Fundo cinza claro bem suave e profissional */
+    margin: 0; 
+    min-height: 100vh;
+    box-sizing: border-box;
+}
 
-.section { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-.input-group { display: flex; gap: 10px; margin-bottom: 10px; width: 100%; }
-.input-group input { padding: 8px; flex: 1; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+.container { 
+    background: #ffffff; 
+    padding: 2rem; 
+    border-radius: 6px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais leve */
+    width: 100%;
+    max-width: 880px; 
+    display: flex; 
+    gap: 25px; 
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    border-top: 4px solid #0284c7; /* Detalhe em azul técnico */
+}
 
-button { width: 100%; padding: 10px; border: none; border-radius: 4px; cursor: pointer; color: white; margin-bottom: 5px; }
-button#btnGerar { background: #007bff; }
-button#btnGerarFixo { background: #28a745; }
-button#btnGerarPar { background: #6f42c1; }
+.panel {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc; /* Fundo do painel interno */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
 
-button:hover { opacity: 0.9; }
+h2 {
+    font-size: 1rem;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-#resultado { width: 100%; height: 150px; margin-top: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; resize: none; }
-#mensagemStatus { margin-top: 10px; padding: 10px; border-radius: 4px; text-align: center; display: none; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; font-size: 0.9rem; }
+.input-field {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.input-field input { 
+    padding: 9px; 
+    border: 1px solid #94a3b8; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    font-size: 0.95rem;
+    width: 100%;
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row .input-field {
+    flex: 1;
+}
+
+button { 
+    width: 100%; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    color: white; 
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+}
+
+button.primary { 
+    background: #0284c7; /* Azul Metrologia */
+}
+
+button.primary:hover { 
+    background: #0369a1; 
+}
+
+button.secondary { 
+    background: #0f766e; /* Verde Petróleo / Técnico */
+}
+
+button.secondary:hover { 
+    background: #115e59; 
+}
+
+textarea { 
+    width: 100%; 
+    height: 140px; 
+    padding: 10px; 
+    border: 1px solid #94a3b8; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    resize: none; 
+    background-color: #ffffff;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 0.9rem;
+    color: #334155;
+}

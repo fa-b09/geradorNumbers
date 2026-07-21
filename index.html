@@ -3,43 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Séries</title>
+    <title>Gerador de Séries para Excel</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Gerador de Séries</h1>
+    <div class="container" style="width: 700px; display: flex; gap: 20px;">
         
-        <!-- Funcionalidade 1: Original -->
-        <div class="section">
-            <div class="input-group">
-                <input type="text" id="prefixo" value="79/1012" placeholder="Prefixo">
-                <input type="number" id="qnt" value="10" placeholder="Qtd">
+        <!-- Coluna da Esquerda: Dados Principais (Atendimento, LMC, Caminhão, NF) -->
+        <div style="flex: 1;">
+            <h2>Dados Principais</h2>
+            
+            <div class="input-field">
+                <label for="atendimentoGas">Atendimento (GAS):</label>
+                <input type="text" id="atendimentoGas" value="12740-2026-159" placeholder="Ex: 12740-2026-159">
             </div>
-            <button id="btnGerar">Gerar Sequencial</button>
+
+            <div class="input-field">
+                <label for="idLmc">ID do LMC (Inicial):</label>
+                <input type="text" id="idLmc" value="159/2755-01" placeholder="Ex: 159/2755-01">
+            </div>
+
+            <div class="input-row" style="display: flex; gap: 10px;">
+                <div class="input-field">
+                    <label for="caminhao">Caminhão:</label>
+                    <input type="text" id="caminhao" value="79" placeholder="Caminhão">
+                </div>
+                <div class="input-field">
+                    <label for="notaFiscal">Nota Fiscal:</label>
+                    <input type="text" id="notaFiscal" value="29969" placeholder="Nota Fiscal">
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label for="qntExcel">Vezes (Max 20):</label>
+                <input type="number" id="qntExcel" value="12" min="1" max="20" placeholder="Qtd">
+            </div>
+
+            <button id="btnGerarExcel" class="primary">Gerar Dados Principais</button>
+            <textarea id="resultado" readonly placeholder="Dados principais aqui..."></textarea>
         </div>
 
-        <!-- Funcionalidade 2: Número Fixo -->
-        <div class="section">
-            <div class="input-group">
-                <input type="text" id="numFixo" placeholder="Número (ex: 1311)">
-                <input type="number" id="qntFixo" value="1" min="1" max="20" placeholder="Vezes">
+        <!-- Coluna da Direita: Relatórios Separados -->
+        <div style="flex: 1; border-left: 1px solid #ddd; padding-left: 20px;">
+            <h2>Relatórios (Pares)</h2>
+            
+            <div class="input-field">
+                <label for="numRelatorio">Relatório Inicial:</label>
+                <input type="text" id="numRelatorio" value="47965" placeholder="Relatório Inicial">
             </div>
-            <button id="btnGerarFixo" class="secondary">Gerar Fixo</button>
+
+            <div class="input-field">
+                <label for="qntRelatorio">Vezes (Max 20):</label>
+                <input type="number" id="qntRelatorio" value="12" min="1" max="20" placeholder="Qtd">
+            </div>
+
+            <button id="btnGerarRelatorio" class="secondary" style="background: #28a745;">Gerar Relatórios</button>
+            <textarea id="resultadoRelatorio" readonly placeholder="Relatórios em pares aqui..."></textarea>
         </div>
 
-        <!-- Funcionalidade 3: Pares -->
-        <div class="section">
-            <div class="input-group">
-                <input type="text" id="numPar" placeholder="Número (ex: 1371)">
-                <input type="number" id="qntPar" value="1" min="1" max="20" placeholder="Pares">
-            </div>
-            <button id="btnGerarPar" class="tertiary">Gerar Pares</button>
-        </div>
-        
-        <div id="mensagemStatus"></div> 
-        <textarea id="resultado" readonly placeholder="Os números aparecerão aqui..."></textarea>
     </div>
     <script src="script.js"></script>
 </body>
-</html>cd
+</html>

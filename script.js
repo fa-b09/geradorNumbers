@@ -1,49 +1,70 @@
-const campoResultado = document.getElementById('resultado');
-const msgStatus = document.getElementById('mensagemStatus');
-
-function mostrarStatus(texto) {
-    msgStatus.innerText = texto;
-    msgStatus.style.display = "block";
-    setTimeout(() => { msgStatus.style.display = "none"; }, 3000);
+// Função auxiliar para manter o objeto fixo e incrementar apenas o final (ex: 323/4282-01, 323/4282-02...)
+function incrementarSufixoLmc(lmcBase, passo) {
+    const partes = lmcBase.split('/');
+    if (partes.length !== 2) return lmcBase;
+    
+    const prefixo = partes[0]; // Ex: "323"
+    const subPartes = partes[1].split('-');
+    
+    if (subPartes.length !== 2) return lmcBase;
+    
+    const numeroObjeto = subPartes[0]; // Ex: "4282" (fica fixo)
+    const sufixoInicial = parseInt(subPartes[1], 10); // Ex: "01"
+    
+    const novoSufixo = sufixoInicial + passo;
+    // Garante que fique com 2 dígitos (ex: 1 vira "01", 10 vira "10")
+    const sufixoFormatado = novoSufixo.toString().padStart(2, '0');
+    
+    return `${prefixo}/${numeroObjeto}-${sufixoFormatado}`;
 }
 
-// 1. Sequencial
-document.getElementById('btnGerar').addEventListener('click', () => {
-    const prefixo = document.getElementById('prefixo').value;
-    const qnt = parseInt(document.getElementById('qnt').value);
-    let output = "";
-    for (let i = 1; i <= qnt; i++) {
-        output += `${prefixo}-${i.toString().padStart(2, '0')}\n`;
-    }
-    campoResultado.value = output;
-    navigator.clipboard.writeText(output).then(() => mostrarStatus("Lista copiada!"));
-});
-
-// 2. Número Fixo
-document.getElementById('btnGerarFixo').addEventListener('click', () => {
-    const num = document.getElementById('numFixo').value;
-    let qnt = Math.min(parseInt(document.getElementById('qntFixo').value), 20);
-    let output = "";
-    for (let i = 0; i < qnt; i++) {
-        output += `${num}\n`;
-    }
-    campoResultado.value = output;
-    navigator.clipboard.writeText(output).then(() => mostrarStatus("Números fixos copiados!"));
-});
-
-// 3. Pares (Sequencial de pares)
-document.getElementById('btnGerarPar').addEventListener('click', () => {
-    let numBase = parseInt(document.getElementById('numPar').value);
-    let qnt = Math.min(parseInt(document.getElementById('qntPar').value), 20);
-    let output = "";
-
-    // O loop gera a quantidade de números que você pediu
-    for (let i = 0; i < qnt; i++) {
-        let proximoNum = numBase + i;
-        // Adiciona o número duas vezes em linhas separadas
-        output += `${proximoNum}\n${proximoNum}\n`;
-    }
+// 1. Gerador dos Dados Principais
+document.getElementById('btnGerarExcel').addEventListener('click', () => {
+    const atendimentoGas = document.getElementById('atendimentoGas').value;
+    const lmcBase = document.getElementById('idLmc').value;
+    const caminhao = document.getElementById('caminhao').value;
+    const notaFiscal = document.getElementById('notaFiscal').value;
     
+    let qnt = parseInt(document.getElementById('qntExcel').value, 10) || 1;
+    qnt = Math.max(1, Math.min(qnt, 20));
+
+    let output = "";
+
+    for (let i = 0; i < qnt; i++) {
+        const lmcAtual = incrementarSufixoLmc(lmcBase, i);
+        output += `${atendimentoGas}\t${lmcAtual}\t${caminhao}\t${notaFiscal}\n`;
+    }
+
+    const campoResultado = document.getElementById('resultado');
     campoResultado.value = output;
-    navigator.clipboard.writeText(output).then(() => mostrarStatus("Pares sequenciais copiados!"));
+    
+    navigator.clipboard.writeText(output).then(() => {
+        alert("Dados Principais copiados com sucesso!");
+    }).catch(err => {
+        console.error(err);
+    });
+});
+
+// 2. Gerador Separado de Relatórios em Pares
+document.getElementById('btnGerarRelatorio').addEventListener('click', () => {
+    let relatorioBase = parseInt(document.getElementById('numRelatorio').value, 10) || 0;
+    
+    let qnt = parseInt(document.getElementById('qntRelatorio').value, 10) || 1;
+    qnt = Math.max(1, Math.min(qnt, 20));
+
+    let output = "";
+
+    for (let i = 0; i < qnt; i++) {
+        let relatorioAtual = relatorioBase + Math.floor(i / 2);
+        output += `${relatorioAtual}\n`;
+    }
+
+    const campoResultadoRelatorio = document.getElementById('resultadoRelatorio');
+    campoResultadoRelatorio.value = output;
+    
+    navigator.clipboard.writeText(output).then(() => {
+        alert("Relatórios copiados com sucesso!");
+    }).catch(err => {
+        console.error(err);
+    });
 });
