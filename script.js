@@ -1,11 +1,24 @@
-// Máscara automática para o ID do LMC (formata enquanto o usuário digita)
+// Máscara automática para o Atendimento (GAS) -> Ex: 12740-2026-159
+const inputGas = document.getElementById('atendimentoGas');
+
+inputGas.addEventListener('input', (e) => {
+    let valor = e.target.value.replace(/\D/g, '');
+    
+    if (valor.length > 5 && valor.length <= 9) {
+        valor = valor.substring(0, 5) + '-' + valor.substring(5);
+    } else if (valor.length > 9) {
+        valor = valor.substring(0, 5) + '-' + valor.substring(5, 9) + '-' + valor.substring(9, 12);
+    }
+    
+    e.target.value = valor;
+});
+
+// Máscara automática para o ID do LMC -> Ex: 159/2755-01
 const inputLmc = document.getElementById('idLmc');
 
 inputLmc.addEventListener('input', (e) => {
-    // Remove tudo o que não for número
     let valor = e.target.value.replace(/\D/g, '');
     
-    // Aplica a formatação progressiva (ex: 159/2755-01)
     if (valor.length > 3 && valor.length <= 7) {
         valor = valor.substring(0, 3) + '/' + valor.substring(3);
     } else if (valor.length > 7) {
@@ -15,7 +28,7 @@ inputLmc.addEventListener('input', (e) => {
     e.target.value = valor;
 });
 
-// Função auxiliar para manter o objeto fixo e incrementar apenas o final (ex: 323/4282-01, 323/4282-02...)
+// Função auxiliar para manter o objeto fixo e incrementar apenas o final
 function incrementarSufixoLmc(lmcBase, passo) {
     const partes = lmcBase.split('/');
     if (partes.length !== 2) return lmcBase;

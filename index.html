@@ -15,13 +15,13 @@
             
             <div class="input-field">
                 <label for="atendimentoGas">Atendimento (GAS):</label>
-                <input type="text" id="atendimentoGas" value="12740-2026-159" placeholder="Ex: 12740-2026-159">
+                <!-- Com o maxlength para 14 caracteres (5 + 4 + 3 + 2 traços) -->
+                <input type="text" id="atendimentoGas" value="12740-2026-159" maxlength="14" placeholder="Digite só números">
             </div>
 
             <div class="input-field">
                 <label for="idLmc">ID do LMC (Inicial):</label>
-                <!-- Alterado o maxlength para caber exatamente os números e símbolos formatados -->
-                <input type="text" id="idLmc" value="159/2755-01" maxlength="11" placeholder="Digite só números (ex: 159275501)">
+                <input type="text" id="idLmc" value="159/2755-01" maxlength="11" placeholder="Digite só números">
             </div>
 
             <div class="input-row">
